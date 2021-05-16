@@ -1,5 +1,4 @@
 import requests
-import requests
 
 url = "mail.google.com"
 
