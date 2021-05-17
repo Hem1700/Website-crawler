@@ -14,6 +14,6 @@ with open("C:\\Users\\dharm\\PycharmProjects\\crawler\\subdomains.txt", "r") as 
         test_url = word + "." + target_url
         response = request(target_url)
         if response:
-            print("[+] Discovered a subdomain --> " + response)
+            print("[+] Discovered a subdomain --> " + test_url)
 
   
