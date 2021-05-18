@@ -22,8 +22,8 @@ def get_subdomains(url):
     with open("C:\\Users\\dharm\\PycharmProjects\\crawler\\subdomains.txt", "r") as word_list:
         for line in word_list:
             word = line.strip()
-            test_url = word + "." + target_url
-            response = requests.get(target_url)
+            test_url = word + "." + url
+            response = requests.get(url)
             if response:
                 print("[+] Discovered a subdomain --> " + test_url)
 
@@ -33,8 +33,8 @@ def get_directories(url):
     with open("C:\\Users\dharm\\PycharmProjects\\crawler\\directories.txt", "r") as directory_list:
         for line in directory_list:
             directory = line.strip()
-            direct_url =  target_url + "/" + directory
-            response = requests.get(direct_url)
+            direct_url =  url + "/" + directory
+            response = requests.get(url)
             if response:
                 print("[+] Discovered URL --> " + direct_url)
 
