@@ -1,5 +1,5 @@
 import requests
-
+import re
 
 def request(url):
     try:    
@@ -8,6 +8,11 @@ def request(url):
         pass    
 
 target_url = "10.0.2.4/mutillidae/"
+
+# To get all the links on a webpage 
+repsonse = request(target_url)
+href_links = re.findall('(?:href=")(.*?)"', str(repsonse.content))
+print(href_links)
 
 # To check the subdomains 
 with open("C:\\Users\\dharm\\PycharmProjects\\crawler\\subdomains.txt", "r") as word_list:
