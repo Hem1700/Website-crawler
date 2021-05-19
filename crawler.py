@@ -4,6 +4,7 @@ import urllib.parse
 
 
 target_url = "10.0.2.4/mutillidae/"
+webpage_links = []
 
 def extract_link(url):
 # To get all the links on a webpage 
@@ -13,7 +14,12 @@ def extract_link(url):
 href_link = extract_link(target_url)
 for link in href_link:
     link  = urllib.parse.urljoin(target_url, link)
-    if target_url in link:
+
+    if '#' in link:
+        link = link.split('#')[0]
+
+    if target_url in link and link not in webpage_links:
+        webpage_links.append(link)
         print(href_link)
 
 
