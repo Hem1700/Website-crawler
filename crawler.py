@@ -7,21 +7,23 @@ target_url = "10.0.2.4/mutillidae/"
 webpage_links = []
 
 def extract_link(url):
-# To get all the links on a webpage 
-    repsonse = requests.get("http://" + url)
+    repsonse = requests.get("http://" + url)              # To get all the links on a webpage 
     return re.findall('(?:href=")(.*?)"', str(repsonse.content))
 
-href_link = extract_link(target_url)
-for link in href_link:
-    link  = urllib.parse.urljoin(target_url, link)
+def crawler(url):
+    href_link = extract_link(url)
+    for link in href_link:
+        link  = urllib.parse.urljoin(url, link)
 
-    if '#' in link:
-        link = link.split('#')[0]
+        if '#' in link:
+            link = link.split('#')[0]
 
-    if target_url in link and link not in webpage_links:
-        webpage_links.append(link)
-        print(href_link)
+        if target_url in link and link not in webpage_links:
+            webpage_links.append(link)
+            print(link)
+            crawler(link)
 
+crawler(target_url)
 
 def get_subdomains(url):
 # To check the subdomains 
