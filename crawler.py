@@ -8,7 +8,7 @@ webpage_links = []
 
 def extract_link(url):
     repsonse = requests.get("http://" + url)              # To get all the links on a webpage 
-    return re.findall('(?:href=")(.*?)"', str(repsonse.content))
+    return re.findall('(?:href=")(.*?)"', (repsonse.content.decode(errors="ignore"))
 
 def crawler(url):
     href_link = extract_link(url)
